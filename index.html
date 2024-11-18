@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <title>Home</title>
+                        <script src="https://cdn.tailwindcss.com"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
+                    </head>
+                    <body class="bg-white">
+                        <main class="max-w-7xl mx-auto px-4 py-8">
+  <header class="text-center mb-12">
+    <h1 class="text-5xl font-bold">Spencience Snake Game</h1>
+    <h2 class="text-lg font-medium text-gray-500">Built with Phaser</h2>
+  </header>
+  <section id="game-section" class="flex justify-center mb-12">
+    <div id="game-container" class="w-full h-96 bg-gray-100 rounded shadow-inner"></div>
+  </section>
+  <section id="controls-section" class="flex justify-center mb-12">
+    <div class="flex gap-4">
+      <button id="start-button" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">Start Game</button>
+      <button id="pause-button" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" disabled>Pause Game</button>
+      <button id="reset-button" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Reset Game</button>
+    </div>
+  </section>
+  <section id="score-section" class="text-center mb-12">
+    <h3 class="text-lg font-medium">Score:</h3>
+    <span id="score-counter" class="text-3xl font-bold">0</span>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser.min.js"></script>
+  <script>
+    // Phaser game logic goes here
+    const config = {
+      type: Phaser.AUTO,
+      parent: 'game-container',
+      width: 800,
+      height: 600,
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { x: 0, y: 0 }
+        }
+      },
+      scene: {
+        preload: preload,
+        create: create,
+        update: update
+      }
+    };
+
+    const game = new Phaser.Game(config);
+
+    let snake;
+    let food;
+    let score = 0;
+
+    function preload() {
+      this.load.image('snake', 'assets/snake.png');
+      this.load.image('food', 'assets/food.png');
+    }
+
+    function create() {
+      snake = this.physics.add.sprite(400, 300, 'snake');
+      food = this.physics.add.sprite(400, 300, 'food');
+
+      this.input.keyboard.createCursorKeys();
+    }
+
+    function update() {
+      // Game logic goes here
+    }
+  </script>
+</main>
+                    </body>
+                    </html>
